@@ -292,14 +292,15 @@
                                                                               action:@selector(tappedToDismiss)];
     [self.view addGestureRecognizer:tapGesture];
 
-    //To set all the components tot default property
+    
     [self layoutSubviews];
-    if (!self.handleGoogleSchema)
-    {
-    [self setToDefaultProperties];
+    
+    if (!self.handleGoogleSchema) {
+        [self setToDefaultProperties]; //To set all the components tot default property, excluding the case of google login.
     }
+    // if returning from Google Login.
     else{
-        [self.view setUserInteractionEnabled:!self.handleGoogleSchema];
+        [self.view setUserInteractionEnabled:NO];
     }
 }
 
