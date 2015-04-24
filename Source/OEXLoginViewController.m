@@ -294,7 +294,13 @@
 
     //To set all the components tot default property
     [self layoutSubviews];
+    if (!self.handleGoogleSchema)
+    {
     [self setToDefaultProperties];
+    }
+    else{
+        [self.view setUserInteractionEnabled:!self.handleGoogleSchema];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
@@ -543,6 +549,7 @@
 - (IBAction)googleClicked:(id)sender {
     isSocialLoginClicked = YES;
     self.handleGoogleSchema = YES;
+    [self.view setUserInteractionEnabled:!self.handleGoogleSchema];
     self.strLoggedInWith = @"Google";
     [self externalLoginWithProvider:[[OEXGoogleAuthProvider alloc] init]];
 }
@@ -555,6 +562,7 @@
                                                              shouldHide:YES];
         self.handleFacebookSchema = NO;
         self.handleGoogleSchema = NO;
+        [self.view setUserInteractionEnabled:!self.handleGoogleSchema];
         self.strLoggedInWith = @"";
         return;
     }
@@ -566,6 +574,7 @@
         }
         self.handleFacebookSchema = NO;
         self.handleGoogleSchema = NO;
+        [self.view setUserInteractionEnabled:!self.handleGoogleSchema];
         
         [self handleLoginResponseWith:data response:response error:error];
     };
