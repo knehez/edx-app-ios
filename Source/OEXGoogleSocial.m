@@ -18,7 +18,7 @@
 #import "OEXRouter.h"
 #import "OEXSession.h"
 
-@interface OEXGoogleSocial () <GPPSignInDelegate>
+@interface OEXGoogleSocial () <GPPSignInDelegate,OEXGoogleAuthContainerViewControllerDelegate>
 
 @property (copy, nonatomic) OEXGoogleOEXLoginCompletionHandler completionHandler;
 
@@ -72,6 +72,7 @@
     BOOL isGoogleAuthURL = [url.host isEqualToString:@"accounts.google.com"] && [url.path isEqualToString:@"/o/oauth2/auth"];
     if(isGoogleAuthURL) {
         OEXGoogleAuthContainerViewController* authorizationController = [[OEXGoogleAuthContainerViewController alloc] initWithAuthorizationURL:url];
+        [authorizationController setDelegate:self];
         UINavigationController* container = [[UINavigationController alloc] initWithRootViewController:authorizationController];
         [[OEXRouter sharedRouter] presentViewController:container fromController:controller];
         return YES;
@@ -120,6 +121,22 @@
     [service executeQuery:query completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
         completion(object, [[GPPSignIn sharedInstance] userEmail], error);
     }];
+}
+
+#pragma mark - OEXGoogleAuthContainerViewControllerDelegate
+
+- (void)OEXGoogleAuthContainerViewControllerDidPressCancel:(UIViewController *)viewController{
+    
+    NSMutableDictionary* details = [NSMutableDictionary dictionary];
+    [details setValue:@"User Pressed Cancel" forKey:NSLocalizedDescriptionKey];
+    
+    NSError* error = [NSError errorWithDomain:@"Auth Failed" code:401 userInfo:details];
+    
+    if(self.completionHandler != nil) {
+        self.completionHandler([NSString stringWithFormat:@"%ld",(long)error.code], error);
+    }
+    [self clearHandler];
+    
 }
 
 @end

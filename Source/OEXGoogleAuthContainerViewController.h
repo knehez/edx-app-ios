@@ -13,8 +13,16 @@
 // Google Plus App, Chrome, Safari (in that order) but Apple is requiring
 // us to use an in app web view.
 
+
+@protocol OEXGoogleAuthContainerViewControllerDelegate <NSObject>
+
+- (void) OEXGoogleAuthContainerViewControllerDidPressCancel: (UIViewController *) viewController;
+
+@end
+
 @interface OEXGoogleAuthContainerViewController : UIViewController
 
 - (id)initWithAuthorizationURL:(NSURL*)url;
+@property (strong, nonatomic) id<OEXGoogleAuthContainerViewControllerDelegate> delegate;
 
 @end

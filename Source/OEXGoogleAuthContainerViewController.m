@@ -65,6 +65,7 @@
 
 - (IBAction)cancelTapped:(id)sender {
     [self hide];
+    [[self delegate] OEXGoogleAuthContainerViewControllerDidPressCancel:self];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
