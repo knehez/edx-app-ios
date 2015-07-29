@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 edX. All rights reserved.
 //
 
+#import "edX-Swift.h"
 #import "OEXMyVideosViewController.h"
 
 #import "NSArray+OEXSafeAccess.h"
@@ -165,7 +166,6 @@ typedef  enum OEXAlertType
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:true animated:animated];
 
     // Add Observer
     [self addObservers];
@@ -205,8 +205,6 @@ typedef  enum OEXAlertType
     else {
         [self HideOfflineLabel:NO];
     }
-
-    self.navigationController.navigationBarHidden = YES;
 
     self.table_RecentVideos.separatorInset = UIEdgeInsetsZero;
 #ifdef __IPHONE_8_0
@@ -270,7 +268,6 @@ typedef  enum OEXAlertType
     //Hide back button
     [self.navigationItem setHidesBackButton:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:nil action:nil];
-    [self.navigationController.navigationBar setTranslucent:NO];
 
     //Set exclusive touch for all buttons
     self.btn_LeftNavigation.exclusiveTouch = YES;
@@ -330,6 +327,9 @@ typedef  enum OEXAlertType
     [self performSelector:@selector(reloadTable) withObject:self afterDelay:5.0];
     //Analytics Screen record
     [[OEXAnalytics sharedAnalytics] trackScreenWithName: @"My Videos - All Videos"];
+    
+    
+    
 }
 
 - (void)reloadTable {

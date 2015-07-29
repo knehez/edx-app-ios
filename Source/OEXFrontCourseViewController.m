@@ -202,7 +202,6 @@
 
     self.revealViewController.delegate = self;
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-//    [self.view removeGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
     //Fix for 20px issue for the table view
     self.automaticallyAdjustsScrollViewInsets = NO;
