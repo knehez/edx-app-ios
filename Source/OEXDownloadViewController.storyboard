@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -32,14 +32,14 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="501" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction to giving with purpose" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeK-Lk-T2S" customClass="OEXCustomLabel">
                                                     <rect key="frame" x="16" y="17" width="522" height="17"/>
-                                                    <accessibility key="accessibilityConfiguration" label="lbVideoName"/>
+                                                    <accessibility key="accessibilityConfiguration" label=""/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.27058823529999998" green="0.28627450980000002" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="502" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:45" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVM-DI-8yI" customClass="OEXCustomLabel">
                                                     <rect key="frame" x="16" y="41" width="47" height="10"/>
-                                                    <accessibility key="accessibilityConfiguration" label="btnVideoLength"/>
+                                                    <accessibility key="accessibilityConfiguration" label=""/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="10" id="Ac7-sx-5Rh"/>
                                                         <constraint firstAttribute="width" constant="47" id="dnb-ba-UOv"/>
@@ -50,7 +50,7 @@
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="503" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200MB" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hZ-ip-mB0" customClass="OEXCustomLabel">
                                                     <rect key="frame" x="64" y="41" width="47" height="10"/>
-                                                    <accessibility key="accessibilityConfiguration" label="btnVideoSize"/>
+                                                    <accessibility key="accessibilityConfiguration" label=""/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="47" id="KiK-Ee-S5k"/>
                                                         <constraint firstAttribute="height" constant="10" id="rFy-rd-xGU"/>
@@ -66,7 +66,7 @@
                                                 </progressView>
                                                 <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yso-SD-GgP">
                                                     <rect key="frame" x="548" y="1" width="52" height="77"/>
-                                                    <accessibility key="accessibilityConfiguration" label="btnVideoDownloadCancel"/>
+                                                    <accessibility key="accessibilityConfiguration" label=""/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="52" id="7Z0-ux-bB4"/>
                                                         <constraint firstAttribute="height" constant="77" id="RSf-al-LIq"/>
@@ -92,6 +92,9 @@
                                                 <constraint firstItem="yso-SD-GgP" firstAttribute="leading" secondItem="VeK-Lk-T2S" secondAttribute="trailing" constant="10" id="uW8-7o-jZa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="btn_cancel" destination="yso-SD-GgP" id="e3K-TO-8Nv"/>
                                             <outlet property="lbl_time" destination="hVM-DI-8yI" id="zMC-0G-62Q"/>

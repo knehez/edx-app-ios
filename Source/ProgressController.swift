@@ -42,6 +42,7 @@ public class ProgressController: NSObject {
         downloadButton = UIButton.buttonWithType(.System) as! UIButton
         downloadButton.setImage(UIImage(named: "ic_download_arrow"), forState: .Normal)
         downloadButton.frame = ProgressViewFrame
+        downloadButton.accessibilityLabel = OEXLocalizedString("ACCESSIBILITY_CURRENT_DOWNLOADS", nil)
         
         
         circularProgressView.addSubview(downloadButton)

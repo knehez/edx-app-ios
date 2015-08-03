@@ -8,6 +8,8 @@
 
 // Please keep in alphabetical order
 
+/* Accessibility label active downloads button */
+"ACCESSIBILITY_CURRENT_DOWNLOADS" = "Active downloads";
 /* Alert dialog confirmation button when user chooses to download a large video */
 "ACCEPT_LARGE_VIDEO_DOWNLOAD"="Download";
 /* Add a comment button title used in discussion's comements screen */
@@ -176,7 +178,7 @@
 "DO_NOT_ALLOW"="Don't allow";
 /* Button text for confirming download */
 "DOWNLOAD" = "Download";
-/* Title of video downloads screen */
+/* Text used for directing to downloads */
 "DOWNLOADS"="Downloads";
 /* Overlay message after user chooses to download a video */
 "DOWNLOADING_1_VIDEO"="Downloading 1 video.";
