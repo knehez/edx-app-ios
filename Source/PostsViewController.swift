@@ -88,6 +88,8 @@ class PostsViewController: UIViewController, UITableViewDataSource, UITableViewD
     private var selectedFilter: DiscussionPostsFilter = .AllPosts
     private var selectedOrderBy: DiscussionPostsSort = .RecentActivity
     
+    private var queryString : String?
+    
     private var filterTextStyle : OEXTextStyle {
         return OEXTextStyle(weight : .Normal, size: .XSmall, color: self.environment.styles.primaryBaseColor())
     }
@@ -100,10 +102,11 @@ class PostsViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.init(nibName: nil, bundle: nil)
     }
     
-    init(environment: PostsViewControllerEnvironment, courseID: String, searchResults : [DiscussionThread]) {
+    init(environment: PostsViewControllerEnvironment, courseID: String, searchResults : [DiscussionThread], queryString : String) {
         self.environment = environment
         self.courseID = courseID
         self.context = Context.SearchResults(searchResults)
+        self.queryString = queryString
         loadController = LoadStateViewController(styles: environment.styles)
         super.init(nibName: nil, bundle: nil)
         loadController.setupInController(self, contentView: contentView)
@@ -275,7 +278,12 @@ class PostsViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
         if threads.count == 0 {
-            loadController.state = LoadState.empty(icon: Icon.NoSearchResults, message: OEXLocalizedString("EMPTY_RESULTSET", nil), attributedMessage: nil, accessibilityMessage: nil)
+             var emptyResultSetMessage : NSString = OEXLocalizedString("EMPTY_RESULTSET", nil)
+            if let query = queryString {
+                emptyResultSetMessage = emptyResultSetMessage.oex_formatWithParameters(["query_string" : query])
+            }
+            loadController.state = LoadState.empty(icon: nil, message: emptyResultSetMessage as? String, attributedMessage: nil, accessibilityMessage: nil)
+            
         }
         else {
             loadController.state = .Loaded
